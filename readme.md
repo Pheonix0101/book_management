@@ -27,7 +27,7 @@ Install Node.js version 14.17.6
 # EndPoints followed with route name
 http://localhost:9000/
 
-1> for Adding:- create;  
+1> for Adding:- insert;  
 2> for view database:- get;  
 3> for searching in database by ItsID:- findbyId/book_id   
 4> for deleting :- delete      
