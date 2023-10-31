@@ -1,7 +1,6 @@
 import "../config/database_connection";
 import { Request, Response } from "express";
 import books from "../models/books";
-import redisClient from "../config/redis_client";
 
 const insertRecord = async (req: Request, res: Response) => {
   try {
@@ -24,13 +23,7 @@ const insertRecord = async (req: Request, res: Response) => {
 
 const getData = async (req: Request, res: Response) => {
   try {
-    const cacheValue = await redisClient.get("myKey");
-    if (cacheValue) return res.status(200).json(JSON.parse(cacheValue));
-
     const result = await books.find();
-
-    await redisClient.set("myKey", JSON.stringify(result));
-    await redisClient.expire("myKey", 30);
 
     res.send({
       Status: {
@@ -40,7 +33,7 @@ const getData = async (req: Request, res: Response) => {
       },
       result,
     });
-   } catch (error) {
+  } catch (error) {
     res.status(500).json({
       status: { statusType: "failure", error: error },
     });
@@ -104,10 +97,4 @@ const findbyId = async (req: Request, res: Response) => {
   }
 };
 
-export {
-  insertRecord,
-  getData,
-  updatebyBookId,
-  remove,
-  findbyId,
-}
+export { insertRecord, getData, updatebyBookId, remove, findbyId };

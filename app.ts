@@ -1,3 +1,4 @@
+console.log("running app.ts");
 import express from "express";
 import bodyParser from "body-parser";
 
@@ -12,9 +13,9 @@ app.use(bodyParser.json());
 
 app.use(bookroute);
 
-app.on('error', (err: any) => {
-  console.error("Error while establishing server connection", err);
-});
+// app.on('error', (err: any) => {
+//   console.error("Error while establishing server connection", err);
+// });
 
 app.listen(PORT, () => {
   console.log(`App is listening on port ${PORT}`);
