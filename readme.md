@@ -65,7 +65,7 @@ EndPoints :-  `http://16.171.4.126:9000/`  followed by route Names;
 
 ## Note: AWS has security feature called security groups where we can define inbound and outbound IP rules. Here are my inbound rules
 
-![Security group inbound rules](<Screenshot 2023-10-31 at 11.01.56 PM.png>)
+![](<inbound rules.png>)
 
 
  
